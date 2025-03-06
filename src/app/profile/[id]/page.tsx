@@ -2,7 +2,7 @@ interface Params {
     id: string;
   }
   
-  export default async function UserProfile({ params }: { params: Params }) {
+  export default function UserProfile({ params }: { params: Params }) {
     const userid = params.id; // No await needed
   
     return (
