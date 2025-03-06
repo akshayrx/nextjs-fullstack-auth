@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
     //understanding what is the path and save it
     const path = request.nextUrl.pathname
     //check if that path is public access
-    const isPublicPath = path === "/login" || path === "/signup"
+    const isPublicPath = path === "/login" || path === "/signup" || path === "/verifyemail"
     //check if token exists and if yes then get its values
     //following line means we creat a const token set its value to if token exist then get value, else empty
     const token = request.cookies.get("token")?.value || ""
@@ -31,5 +31,6 @@ export const config = {
     "/login",
     "/signup",
     "/profile/:path*",
+    "/verifyemail"
   ]
 }
