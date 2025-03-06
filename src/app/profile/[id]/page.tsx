@@ -1,4 +1,8 @@
-export default async function UserProfile({params}: any){
+interface Params {
+    id: string;
+}
+
+export default async function UserProfile({params}: { params: Params }){
     // await params
     const userid = await params.id;
 

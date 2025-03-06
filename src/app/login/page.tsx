@@ -29,10 +29,16 @@ export default function LoginPage() {
             //once login, redirect user to a specific page
             router.push("/profile");
 
-        } catch (error: any) {
-            console.log("login failed", error.message);
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                console.log("login failed", error.message);
+                toast.error(error.message);
+            } else {
+                console.log("login failed", error);
+                toast.error("An unexpected error occurred");
+            }
             //toast is like notification sent on ui, but not configured yet here written only for future reference
-            toast.error(error.message);
+            //toast.error(error.message);
             
         } finally {
             setLoading(false);

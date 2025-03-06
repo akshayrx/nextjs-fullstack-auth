@@ -35,9 +35,13 @@ export default function VerifyEmailPage(){
           });
           console.log("API response:", res.data); // Debug: Check response
           setVerified(true);
-        } catch (error: any) {
+        } catch (error: unknown) {
           setError(true);
-          console.log("Error details:", error.response?.data || error.message);
+          if (axios.isAxiosError(error)) {
+            console.log("Error details:", error.response?.data || error.message);
+          } else {
+            console.log("Error details:", (error as Error).message);
+          }
         }
       };
 

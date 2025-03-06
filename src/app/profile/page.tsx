@@ -16,9 +16,14 @@ export default function ProfilePage() {
             toast.success("logout successful");
             router.push("/login");
 
-        } catch (error: any) {
-            console.log(error.message);
-            toast.error(error.message);
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                console.log(error.message);
+                toast.error(error.message);
+            } else {
+                console.log("An unexpected error occurred");
+                toast.error("An unexpected error occurred");
+            }
 
         }
     }

@@ -25,10 +25,14 @@ export default function SignupPage() {
             console.log("Signup success", response.data);
             router.push("/login");
             
-        } catch (error:any) {
-            console.log("Signup failed", error.message);
-            
-            toast.error(error.message);
+        } catch (error:unknown) {
+            if (axios.isAxiosError(error)) {
+                console.log("Signup failed", error.message);
+                toast.error(error.message);
+            } else {
+                console.log("Signup failed", error);
+                toast.error("An unexpected error occurred");
+            }
         } finally {
             setLoading(false)
         }

@@ -1,5 +1,4 @@
-import { log } from "console";
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 export async function connect(){
     try {
