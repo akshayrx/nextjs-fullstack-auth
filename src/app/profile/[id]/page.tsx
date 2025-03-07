@@ -17,6 +17,6 @@
 //       </div>
 //     );
 //   }
-export default function UserProfile({ params }: { params: { id: string } }) {
+export default function UserProfile() {
     return null; // or <></> if you prefer
   }
